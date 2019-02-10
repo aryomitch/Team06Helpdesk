@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', 'PagesController@login');
