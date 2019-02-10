@@ -8,11 +8,9 @@
     <style type="text/css">
         body {
             background-color: #d3d3d3;
-        }
-        .nav-tabs  {
             text-align: center;
         }
-        body {
+        .nav-tabs  {
             text-align: center;
         }
         .nav-tabs > li {
@@ -21,8 +19,11 @@
             zoom:1;
         }
         .row {
-            text-align: center;
-            border: 1px solid grey;
+            margin: auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 50%;
+            padding: 20px;
+            border-radius: 30px;
         }
         .login {
             text-align: center;
@@ -35,11 +36,26 @@
         #center {
             text-align: center;
         }
+        input {
+            border-radius: 5px;
+            padding: 5px;
+
+        }
+        #hdSubmit {
+            border-radius: 5px;
+            padding: 5px;
+            width: 50%;
+        }
+        #spSubmit {
+            border-radius: 5px;
+            padding: 5px;
+            width: 50%;
+        }
     </style>
   </head>
   <body>
     <img src="https://i.imgur.com/KZcPvzE.png">
-    <h2> Login Page</h2>
+    <h2> Login Portal</h2>
 
 
     <div class="container" id="center">
