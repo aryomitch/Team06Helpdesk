@@ -1,0 +1,45 @@
+body {
+    background-color: #d3d3d3;
+    text-align: center;
+}
+.nav-tabs  {
+    text-align: center;
+}
+.nav-tabs > li {
+    float: none;
+    display: inline-block;
+    zoom:1;
+}
+.row {
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 50%;
+    padding: 20px;
+    border-radius: 30px;
+}
+.login {
+    text-align: center;
+    margin: 5px;
+}
+#submit {
+    width: 50%;
+    margin: 5px
+}
+#center {
+    text-align: center;
+}
+input {
+    border-radius: 5px;
+    padding: 5px;
+
+}
+#hdSubmit {
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+}
+#spSubmit {
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+}
