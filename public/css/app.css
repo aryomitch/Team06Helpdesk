@@ -10506,7 +10506,12 @@ body {
   zoom: 1;
 }
 
-.row {
+.form-group {
+  margin: auto;
+  text-align: center;
+}
+
+.rowCustom {
   margin: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 50%;
@@ -10524,8 +10529,9 @@ body {
   margin: 5px;
 }
 
-#center {
+.center {
   text-align: center;
+  margin: auto;
 }
 
 input {
@@ -10543,6 +10549,10 @@ input {
   border-radius: 5px;
   padding: 5px;
   width: 50%;
+}
+
+.nav-custom {
+  background: #145C9E;
 }
 
 .navbar-laravel {
