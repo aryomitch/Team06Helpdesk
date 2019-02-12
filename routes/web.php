@@ -11,4 +11,8 @@
 |
 */
 
-Route::get('/', 'PagesController@login');
+Route::get('/', array('as' => 'login2', 'uses' => 'PagesController@login'));
+Route::get('/helpdesk', 'HelpdeskController@index');
+
+Auth::routes();
+
