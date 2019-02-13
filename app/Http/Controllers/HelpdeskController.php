@@ -23,6 +23,6 @@ class HelpdeskController extends Controller
      */
     public function index()
     {
-        return view('pages.helpdesk');
+        return view('pages.dashboard');
     }
 }

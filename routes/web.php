@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', array('as' => 'login2', 'uses' => 'PagesController@login'));
-Route::get('/helpdesk', 'HelpdeskController@index');
+Route::get('/dashboard', 'HelpdeskController@index');
 
 Auth::routes();
 
+Route::get('/', array('as' => 'login2', 'uses' => 'PagesController@login'), function() {
+    if(Auth::check()){return Redirect::to('pages.dashboard');}
+    return view('pages.dashboard');
+});
