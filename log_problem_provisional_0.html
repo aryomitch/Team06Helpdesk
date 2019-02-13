@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log Problem</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+        .root {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 80%;
+            /*height: 600px;*/
+            margin: 0 auto;
+            text-align: center;
+        }
+        .log_body {
+            max-height: 85vh;
+            overflow: auto;
+        }
+        .hori > * {
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .vert {
+            margin: 10px;
+        }
+        .vert > * {
+            display: block;
+            text-align: center;
+            margin: 4px auto;
+        }
+        input {
+            margin-top: 10px;
+        }
+        textarea  {
+            width: 100%;
+            resize: vertical;
+        }
+        #specialist {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <h2>Log Problem</h2>
+        <div class="log_body">
+            <div class="hori">
+                <div class="vert">
+                    <div class="hori">
+                        <!--Is it even necessary to show these?-->
+                        <label for="prob_id">Problem ID: </label>
+                        <span>*PHP generated from database*</span>
+                    </div>
+                    <div class="hori">
+                        <!--Is it even necessary to show these?-->
+                        <label for="empl_id">Employee ID: </label>
+                        <span>*PHP generated from database*</span>
+                    </div>
+                </div>
+                <div class="vert">
+                    <div class="hori">
+                        <label for="software">Software: </label>
+                        <!--Should be generated from database-->
+                        <select id="software">
+                            <option value="cat0">Photoshop</option>
+                            <option value="cat1">Chrome</option>
+                            <option value="cat2">Visual Studio</option>
+                            <option value="cat3">Git</option>
+                        </select>
+                    </div>
+                    <div class="hori">
+                        <label for="os">Operating System: </label>
+                        <!--Should be generated from database-->
+                        <select id="os">
+                            <option value="cat0">Windows 10</option>
+                            <option value="cat1">Windows 8.1</option>
+                            <option value="cat2">Mac OS X</option>
+                            <option value="cat3">Ubuntu</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--These should change to a 'add to desc' section
+            so that the user cant edit the previous desc-->
+            <textarea id="problem_desc" rows="7" placeholder="Problem description"></textarea>
+            <div class="vert">
+                <div class="hori">
+                    <label for="category">Category: </label>
+                    <!--Should be generated from database-->
+                    <select id="category">
+                        <option value="cat0">Software</option>
+                        <option value="cat1">Hardware</option>
+                        <option value="cat2">Network</option>
+                        <option value="cat3">Database</option>
+                    </select>
+                </div>
+                <div class="hori">
+                    <label for="priority">Priority: </label>
+                    <select id="priority">
+                        <option value="cat0">High</option>
+                        <option value="cat1">Medium</option>
+                        <option value="cat2">Low</option>
+                    </select>
+                </div>
+                <div class="hori">
+                    <input type="checkbox" id="resolved">
+                    <label for="resolved">Problem resolved</label>
+                </div>
+            </div>
+            <!--These should change to a 'add to solution' section
+            so that the user cant edit the previous solution-->
+            <textarea id="solution_desc" rows="7" placeholder="Solution"></textarea>
+            <div class="hori">
+                <label for="specialist">Assigned specialist: </label>
+                <!--Replaced with specialist name when one is selected-->
+                <span id="specialist">Select specialist from Specialist Search</span>
+            </div>
+            <!--These should change to a 'add call' section
+            so that the user cant edit the previous call log-->
+            <textarea id="call_log" rows="7" placeholder="Call Log"></textarea>
+        </div>
+        <!--Date and time are auto generated
+            so there is no need for them to be visible-->
+        <input type="datetime-local" id="date_time" hidden>
+        <!--Use these if we decide to remove prob and
+            empl id from page
+        <input type="text" id="prob_id" hidden>
+        <input type="text" id="empl_id" hidden>
+            -->
+        <div style="float: right;">
+            <button type="button" onclick="LogProblem();">Log Problem</button>
+        </div>
+        <br>
+    </div>
+    <script>
+        function AutoGenerateDateTime() {
+          //document.getElementById("date_time").valueAsNumber = (((Date.now() / 60000) | 0) * 60000);
+          return (((Date.now() / 60000) | 0) * 60000);
+        }
+        function LogProblem() {
+            AutoGenerateDateTime()
+            //AutoGenererateProblemId()
+            //AutoGenererateEmployeeId()
+            //Check if input/textarea/select have reasonable values.
+            //Do xhttp stuff to send a POST request to server and log problem with given details
+            //NOTE(robin): If we don't need a lot of custom error check etc. in javascript, 
+            //             we could just use a form and submit button.
+            //After problem has been logged, redirect user to the corresponding "view problem" page.
+        }
+    </script>
+</body>
+</html>
