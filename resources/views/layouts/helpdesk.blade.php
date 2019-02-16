@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Check Issues</h2>
+    <h2>Check Ongoing Issues</h2>
 </div>
 <div class="container boxShadow checkIssues overflow-auto">
     <div class="list-group">
@@ -14,7 +14,9 @@
                   </a>
             @endforeach
         @else
-        
+            <div class="alert alert-info" role="alert">
+                There is currently active issues.
+              </div>
         @endif
     </div>
 </div>
