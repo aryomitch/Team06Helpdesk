@@ -14,7 +14,7 @@
             <select name="caller_id" id="caller_id" for='caller_id' class="form-control">
                     <option selected>Select a caller ID</option>
                 @foreach($employees as $employee)
-                        <option value="{{$employee->id}}">{{$employee->full_name}}</option>
+                        <option value="{{$employee->id}}">ID: {{$employee->id}} - {{$employee->full_name}}</option>
                 @endforeach
             </select>
         </div>
@@ -79,7 +79,7 @@
              </div>
 
             <div id="specialistButton">
-                <button type="button" class="btn btn-outline-secondary" id="extendSpecialistButton" onclick="extendSpecialist()">Unassign Specialist</button>
+                <button type="button" class="btn btn-outline-primary" id="extendSpecialistButton" onclick="extendSpecialist()">Unassign Specialist</button>
             </div>
         </div>
         <hr>
