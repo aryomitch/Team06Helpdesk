@@ -52,6 +52,7 @@ class IssuesController extends Controller
         $issue->caller_id = $request->input('caller_id');
         $issue->helpdesk_id = auth()->user()->id;
         $issue->software = $request->input('software');
+        $issue->hardware = $request->input('hardware');
         $issue->operating_system = $request->input('operating_system');
         $issue->issue_name = $request->input('issue_name');
         $issue->description = $request->input('description');

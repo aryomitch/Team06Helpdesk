@@ -12,9 +12,15 @@
             {{Form::label('caller_id', 'Caller ID')}} <span class="badge badge-pill badge-secondary">Required</span>
             {{Form::select('caller_id', ['caller_1' => 'John Smith', 'caller_2' => 'Nicole Cross'], null, ['placeholder' => 'Select a caller ID', 'class' => 'form-control'])}}
         </div>
-        <div class="form-group">
-            {{Form::label('software', 'Software')}}
-            {{Form::select('software', ['software_1' => 'Photoshop', 'software_2' => 'Chrome', 'software_3' => 'Visual Studio', 'software_4' => 'Git'], null, ['placeholder' => 'Select a software', 'class' => 'form-control'])}}
+        <div class="form-row">
+            <div class="form-group col">
+                {{Form::label('software', 'Software')}}
+                {{Form::select('software', ['software_1' => 'Photoshop', 'software_2' => 'Chrome', 'software_3' => 'Visual Studio', 'software_4' => 'Git'], null, ['placeholder' => 'Select a software', 'class' => 'form-control'])}}
+            </div>
+            <div class="form-group col">
+                {{Form::label('hardware', 'Hardware')}}
+                {{Form::select('hardware', ['hardware_1' => 'Laptop', 'hardware_2' => 'Phone', 'hardware_3' => 'Computer'], null, ['placeholder' => 'Select a hardware', 'class' => 'form-control'])}}
+            </div>
         </div>
         <div class="form-group">
             {{Form::label('operating_system', 'Operating System')}}
