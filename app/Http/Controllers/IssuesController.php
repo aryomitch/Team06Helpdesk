@@ -9,7 +9,7 @@ use App\Employee;
 use App\Software;
 use App\Hardware;
 use App\Operating_system;
-use App\Specialist_categorie;
+use App\Categorie;
 use Redirect;
 
 class IssuesController extends Controller
@@ -37,13 +37,13 @@ class IssuesController extends Controller
         $softwares = Software::all();
         $hardwares = Hardware::all();
         $operatingsystems = Operating_system::all();
-        $Specialist_categories = Specialist_categorie::all();
+        $Categories = Categorie::all();
         return view('issues.create', [
             'employees' => $employees,
             'softwares' => $softwares,
             'hardwares' => $hardwares,
             'operatingsystems' => $operatingsystems,
-            'Specialist_categories' => $Specialist_categories
+            'Categories' => $Categories
         ]);
     }
 

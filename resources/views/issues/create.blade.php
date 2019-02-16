@@ -59,8 +59,8 @@
             {{Form::label('category', 'Category')}} <span class="badge badge-pill badge-secondary">Required</span>
             <select name="category" id="category" for='category' class="form-control">
                     <option selected>Pick the problem category</option>
-                @foreach($Specialist_categories as $Specialist_categorie)
-                        <option value="{{$Specialist_categorie->id}}">{{$Specialist_categorie->categories}}</option>
+                @foreach($Categories as $Categorie)
+                        <option value="{{$Categories->CategoryID}}">{{$Categories->Category_Name}}</option>
                 @endforeach
             </select>
         </div>
