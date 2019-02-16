@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Issue;
+use Redirect;
 
 class HelpdeskController extends Controller
 {
@@ -23,6 +25,7 @@ class HelpdeskController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        $issues = Issue::all();
+        return view('pages.dashboard')->with('issues', $issues);
     }
 }

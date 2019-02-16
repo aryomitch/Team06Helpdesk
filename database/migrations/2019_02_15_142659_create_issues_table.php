@@ -19,6 +19,7 @@ class CreateIssuesTable extends Migration
             $table->string('helpdesk_id');
             $table->string('software')->nullable();
             $table->string('operating_system')->nullable();
+            $table->string('issue_name');
             $table->mediumText('description');
             $table->string('category');
             $table->string('priority');

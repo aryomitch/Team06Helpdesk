@@ -10541,6 +10541,22 @@ body {
   display: none;
 }
 
+.boxShadow {
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.boldText {
+  font: bold;
+  -webkit-text-decoration: blueviolet;
+          text-decoration: blueviolet;
+}
+
+.checkIssues {
+  max-height: 400px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

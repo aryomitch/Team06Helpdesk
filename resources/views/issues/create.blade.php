@@ -3,7 +3,7 @@
 @section('content')
 
 @can('isHelpdesk')
-<div class="container loginForm rowCustom">
+<div class="container loginForm boxShadow">
     <div class="center">
         <h2>Log Problem</h2>
     </div>
@@ -20,6 +20,10 @@
             {{Form::label('operating_system', 'Operating System')}}
             {{Form::select('operating_system', ['os_1' => 'Windows 10', 'os_2' => 'Windows 8.1', 'os_3' => 'Mac OS X', 'os_4' => 'Ubuntu'], null, ['placeholder' => 'Select a operating system', 'class' => 'form-control'])}}
         </div>
+        <div class="form-group">
+                {{Form::label('issue_name', 'Problem Name')}} <span class="badge badge-pill badge-secondary">Required</span>
+                {{Form::text('issue_name', '', ['class' => 'form-control'])}}
+            </div>
         <div class="form-group">
             {{Form::label('description', 'Problem Description')}} <span class="badge badge-pill badge-secondary">Required</span>
             {{Form::textarea('description', '', ['class' => 'form-control', 'rows' => '3'])}}

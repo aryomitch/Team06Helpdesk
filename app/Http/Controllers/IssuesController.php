@@ -15,10 +15,9 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        return Issue::all();
-        return view('issues.create');
-
-        
+        $issues = Issue::all();
+        return view('pages.dashboard')->with('issues', $issues);
+       
     }
 
     /**
@@ -44,7 +43,8 @@ class IssuesController extends Controller
             'caller_id' => 'required',
             'description' => 'required',
             'category' => 'required',
-            'priority' => 'required'
+            'priority' => 'required',
+            'issue_name' => 'required'
         ]);
 
         // Create Issue (Save to Database)
@@ -53,6 +53,7 @@ class IssuesController extends Controller
         $issue->helpdesk_id = auth()->user()->id;
         $issue->software = $request->input('software');
         $issue->operating_system = $request->input('operating_system');
+        $issue->issue_name = $request->input('issue_name');
         $issue->description = $request->input('description');
         $issue->category = $request->input('category');
         $issue->priority = $request->input('priority');
