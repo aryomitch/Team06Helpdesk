@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+        .root {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .issue_body {
+            max-height: 85vh;
+            overflow: auto;
+        }
+        .hori > * {
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .vert {
+            margin: 10px;
+        }
+        .vert > * {
+            display: block;
+            text-align: center;
+            margin: 4px auto;
+        }
+        .table_header {
+            background: #DDDDDD;
+        }
+        table {
+            width: 100%;
+        }
+        table, th, td, tr{
+            border-collapse: collapse;
+            border: 1px solid #CCCCCC;
+        }
+        th,td {
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="">
+        </div>
+        <h2>Check issues</h2>
+        <div class="vert">
+            <input type="text" placeholder="Search">
+            <div class="issue_body">
+                <table>
+                    <!--You may want to change the width, so ProblemID 
+                        doesn't take up so much space...-->
+                    <tr class="table_header">
+                        <th>Problem ID</th>
+                        <th>Employee</th>
+                        <th>Category</th>
+                    </tr>
+                    <!--Example entry, filled out from database-->
+                    <tr>
+                        <td>01</td>
+                        <td>James Bond</td>
+                        <td>Hardware</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
