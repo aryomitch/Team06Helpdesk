@@ -95,7 +95,7 @@
     {!! Form::close() !!}
 </div>
 @endcan
-
+...
 <script>
     function extendSpecialist() {
         var buttonShowHide = document.getElementById("specialistButton");
