@@ -33,7 +33,7 @@
                 <select name="hardware" id="hardware" for='hardware' class="form-control">
                         <option selected>Select a hardware</option>
                     @foreach($hardwares as $hardware)
-                            <option value="{{$hardware->id}}">{{$hardware->hardware_name}}</option>
+                            <option value="{{$hardware->id}}">{{$hardware->hardware_name}} - {{$hardware->serial_number}} </option>
                     @endforeach
                 </select>
             </div>
