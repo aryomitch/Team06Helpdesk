@@ -1,22 +1,24 @@
-{{-- Error info from required form --}}
-@if(count($errors) > 0)
+<div class="container"> 
+    {{-- Error info from required form --}}
+    @if(count($errors) > 0)
     @foreach($errors->all() as $error)
         <div class="alert alert-danger">
             {{$error}}
         </div>
     @endforeach
-@endif
+    @endif
 
-{{-- Success message --}}
-@if (session('success'))
+    {{-- Success message --}}
+    @if (session('success'))
     <div class="alert alert-success">
         {{session('success')}}
     </div>
-@endif
+    @endif
 
-{{-- Error Messages --}}
-@if (session('error'))
+    {{-- Error Messages --}}
+    @if (session('error'))
     <div class="alert alert-danger">
         {{session('error')}}
     </div>
-@endif
+    @endif
+</div>
