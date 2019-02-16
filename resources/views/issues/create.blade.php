@@ -3,6 +3,7 @@
 @section('content')
 
 @can('isHelpdesk')
+
 <div class="container loginForm boxShadow">
     <div class="center">
         <h2>Log Problem</h2>
@@ -10,21 +11,41 @@
     {!! Form::open(['action' => 'IssuesController@store', 'method' => 'post']) !!}
         <div class="form-group">
             {{Form::label('caller_id', 'Caller ID')}} <span class="badge badge-pill badge-secondary">Required</span>
-            {{Form::select('caller_id', ['caller_1' => 'John Smith', 'caller_2' => 'Nicole Cross'], null, ['placeholder' => 'Select a caller ID', 'class' => 'form-control'])}}
+            <select name="caller_id" id="caller_id" for='caller_id' class="form-control">
+                    <option selected>Select a caller ID</option>
+                @foreach($employees as $employee)
+                        <option value="{{$employee->id}}">{{$employee->full_name}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-row">
             <div class="form-group col">
                 {{Form::label('software', 'Software')}}
-                {{Form::select('software', ['software_1' => 'Photoshop', 'software_2' => 'Chrome', 'software_3' => 'Visual Studio', 'software_4' => 'Git'], null, ['placeholder' => 'Select a software', 'class' => 'form-control'])}}
+                <select name="software" id="software" for='software' class="form-control">
+                        <option selected>Select a software</option>
+                    @foreach($softwares as $software)
+                            <option value="{{$software->id}}">{{$software->software_name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group col">
                 {{Form::label('hardware', 'Hardware')}}
-                {{Form::select('hardware', ['hardware_1' => 'Laptop', 'hardware_2' => 'Phone', 'hardware_3' => 'Computer'], null, ['placeholder' => 'Select a hardware', 'class' => 'form-control'])}}
+                <select name="hardware" id="hardware" for='hardware' class="form-control">
+                        <option selected>Select a hardware</option>
+                    @foreach($hardwares as $hardware)
+                            <option value="{{$hardware->id}}">{{$hardware->hardware_name}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group">
             {{Form::label('operating_system', 'Operating System')}}
-            {{Form::select('operating_system', ['os_1' => 'Windows 10', 'os_2' => 'Windows 8.1', 'os_3' => 'Mac OS X', 'os_4' => 'Ubuntu'], null, ['placeholder' => 'Select a operating system', 'class' => 'form-control'])}}
+            <select name="operating_system" id="operating_system" for='operating_system' class="form-control">
+                    <option selected>Select a operating system</option>
+                @foreach($operatingsystems as $operatingsystem)
+                        <option value="{{$operatingsystem->id}}">{{$operatingsystem->operating_system	}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
                 {{Form::label('issue_name', 'Problem Name')}} <span class="badge badge-pill badge-secondary">Required</span>
@@ -36,7 +57,12 @@
         </div>
         <div class="form-group">
             {{Form::label('category', 'Category')}} <span class="badge badge-pill badge-secondary">Required</span>
-            {{Form::select('category', ['category_1' => 'Software', 'category_2' => 'Hardware', 'category_3' => 'Network', 'category_4' => 'Database'], null, ['placeholder' => 'Pick the problem category', 'class' => 'form-control'])}}
+            <select name="category" id="category" for='category' class="form-control">
+                    <option selected>Pick the problem category</option>
+                @foreach($Specialist_categories as $Specialist_categorie)
+                        <option value="{{$Specialist_categorie->id}}">{{$Specialist_categorie->categories}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             {{Form::label('priority', 'Priority')}} <span class="badge badge-pill badge-secondary">Required</span>

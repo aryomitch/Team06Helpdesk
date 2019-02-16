@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Issue;
+use App\User;
+use App\Employee;
+use App\Software;
+use App\Hardware;
+use App\Operating_system;
+use App\Specialist_categorie;
 use Redirect;
 
 class IssuesController extends Controller
@@ -27,7 +33,18 @@ class IssuesController extends Controller
      */
     public function create()
     {
-        return view('issues.create');
+        $employees = Employee::all();
+        $softwares = Software::all();
+        $hardwares = Hardware::all();
+        $operatingsystems = Operating_system::all();
+        $Specialist_categories = Specialist_categorie::all();
+        return view('issues.create', [
+            'employees' => $employees,
+            'softwares' => $softwares,
+            'hardwares' => $hardwares,
+            'operatingsystems' => $operatingsystems,
+            'Specialist_categories' => $Specialist_categories
+        ]);
     }
 
     /**
