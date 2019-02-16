@@ -10,11 +10,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/dashboard') }}">Home</a>
                         </li>
                     </ul>
+
+                    @can('isHelpdesk')
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/issues/create') }}">New Call Issue</a>
+                        </li>
+                    </ul>
+                    @endcan
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

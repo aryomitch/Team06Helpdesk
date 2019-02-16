@@ -1,7 +1,7 @@
  @extends('layouts.template')
 
  @section('content')   
- 
+ <div class="center">
     <img src="https://i.imgur.com/KZcPvzE.png">
         <h2> Login Portal</h2>
 
@@ -67,12 +67,5 @@
             </div>  
             </div>
         </div>
-    {{-- <script type="text/javascript">
-    document.getElementById("hdSubmit").onclick = function() {
-        location.href = "helpDeskLogin.html";
-        }
-    document.getElementById("spSubmit").onclick = function() {
-        location.href = "technicalSpecialistView.html";
-        }
-    </script> --}}
+    </div>
 @endsection

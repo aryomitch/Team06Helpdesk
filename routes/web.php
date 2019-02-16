@@ -19,3 +19,5 @@ Route::get('/', array('as' => 'login2', 'uses' => 'PagesController@login'), func
     if(Auth::check()){return Redirect::to('pages.dashboard');}
     return view('pages.dashboard');
 });
+
+Route::resource('issues', 'IssuesController');

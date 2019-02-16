@@ -1,6 +1,5 @@
 body {
     background-color: #d3d3d3;
-    text-align: center;
 }
 .nav-tabs  {
     text-align: center;
@@ -9,10 +8,6 @@ body {
     float: none;
     display: inline-block;
     zoom:1;
-}
-.form-group {
-    margin: auto;
-    text-align: center;
 }
 .rowCustom {
     margin: auto;
@@ -33,21 +28,12 @@ body {
     text-align: center;
     margin: auto;
 }
-input {
-    border-radius: 5px;
-    padding: 5px;
-
-}
-#hdSubmit {
-    border-radius: 5px;
-    padding: 5px;
-    width: 50%;
-}
-#spSubmit {
-    border-radius: 5px;
-    padding: 5px;
-    width: 50%;
-}
 .nav-custom {
     background: #145C9E;
+}
+.loginForm {
+    padding: 15px;
+}
+#SpecialistDiv {
+    display: none;
 }

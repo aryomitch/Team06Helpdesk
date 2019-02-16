@@ -2,10 +2,11 @@
 
 @section('content')
 
-@extends('layouts.navbar')
+@extends('layouts.helpdesk')
+@extends('layouts.specialist')
+@extends('layouts.analyst')
 
-@can('isAnalyst')
-<h1>Only Analyst can see this</h1>
-@endcan
+
+@extends('layouts.navbar')
 
 @endsection
