@@ -17,6 +17,8 @@ class IssuesController extends Controller
     {
         return Issue::all();
         return view('issues.create');
+
+        
     }
 
     /**

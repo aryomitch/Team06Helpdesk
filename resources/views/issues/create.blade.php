@@ -3,7 +3,7 @@
 @section('content')
 
 @can('isHelpdesk')
-<div class="container loginForm">
+<div class="container loginForm rowCustom">
     <div class="center">
         <h2>Log Problem</h2>
     </div>
@@ -41,6 +41,10 @@
                 {{Form::label('assigned_id', 'Specialist')}}
                 {{Form::select('assigned_id', ['low' => 'Low', 'medium' => 'Medium', 'high' => 'High'], null, ['placeholder' => 'Assign a specialist', 'class' => 'form-control'])}}
              </div>
+
+            <div id="specialistButton">
+                <button type="button" class="btn btn-outline-secondary" id="extendSpecialistButton" onclick="extendSpecialist()">Unassign Specialist</button>
+            </div>
         </div>
         <hr>
         <div class="form-group">
