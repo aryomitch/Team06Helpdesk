@@ -21,3 +21,7 @@ Route::get('/', array('as' => 'login2', 'uses' => 'PagesController@login'), func
 });
 
 Route::resource('issues', 'IssuesController');
+
+Route::get('/systemanalysis', 'AnalystController@systemAnalysis');
+Route::get('/helpdeskanalysis', 'AnalystController@helpdeskAnalysis');
+Route::get('/specialistanalysis', 'AnalystController@specialistAnalysis');

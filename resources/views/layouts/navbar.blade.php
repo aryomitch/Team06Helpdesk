@@ -23,6 +23,23 @@
                         </li>
                     </ul>
                     @endcan
+                    @can('isAnalyst')
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/systemanalysis') }}">System Analysis</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/helpdeskanalysis') }}">Helpdesk Analysis</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/specialistanalysis') }}">Specialist Analysis</a>
+                            </li>
+                        </ul>
+                    @endcan
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

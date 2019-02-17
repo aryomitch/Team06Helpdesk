@@ -1,4 +1,4 @@
-
+@can('isHelpdesk')
 <div class="container">
     <h2>Check Ongoing Issues</h2>
 </div>
@@ -21,3 +21,4 @@
         @endif
     </div>
 </div>
+@endcan

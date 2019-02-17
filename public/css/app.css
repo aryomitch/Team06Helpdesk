@@ -10557,6 +10557,49 @@ body {
   max-height: 400px;
 }
 
+.btn-circle.btn-xl {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 50px;
+  border: 1px solid black;
+  vertical-align: middle;
+}
+
+.button-element {
+  display: inline-block;
+  max-width: 200px;
+}
+
+.systemAnalysis {
+  background-color: #FFA400;
+}
+
+.sys-element {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.helpdeskAnalysis {
+  background-color: #145C9E;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+.AnalysisViewDiv {
+  margin-top: 10px;
+}
+
+.TechnincalAnalysis {
+  background-color: #E417E8;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
