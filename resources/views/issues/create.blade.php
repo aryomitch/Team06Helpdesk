@@ -43,7 +43,7 @@
             <select name="operating_system" id="operating_system" for='operating_system' class="form-control">
                     <option selected>Select a operating system</option>
                 @foreach($operatingsystems as $operatingsystem)
-                        <option value="{{$operatingsystem->id}}">{{$operatingsystem->operating_system	}}</option>
+                        <option value="{{$operatingsystem->id}}">{{$operatingsystem->operating_system}}</option>
                 @endforeach
             </select>
         </div>
@@ -112,7 +112,7 @@
         }
     }
 </script>
-
+@extends('layouts.messages')
 @extends('layouts.navbar')
 
 @endsection

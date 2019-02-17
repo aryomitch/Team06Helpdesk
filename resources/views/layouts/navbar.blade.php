@@ -22,6 +22,11 @@
                             <a class="nav-link" href="{{ url('/issues/create') }}">New Call Issue</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/specialistsearch') }}">Speclalist Search</a>
+                        </li>
+                    </ul>
                     @endcan
                     @can('isAnalyst')
                         <ul class="navbar-nav">

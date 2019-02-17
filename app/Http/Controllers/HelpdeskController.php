@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Issue;
+use App\User;
 use Redirect;
 
 class HelpdeskController extends Controller
@@ -28,4 +29,11 @@ class HelpdeskController extends Controller
         $issues = Issue::all();
         return view('pages.dashboard')->with('issues', $issues);
     }
+
+    public function specialistSearch()
+    {
+        $specialistLists = User::where('role', '=', 'Specialist')->get();
+        return view('pages.specialistSearch')->with('specialistLists', $specialistLists);
+    }
+
 }
