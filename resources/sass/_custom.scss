@@ -88,13 +88,20 @@ body {
 }
 .ProblemAnalysis {
     float: left;
-    display: inline-block;
     max-height: 300px;
 }
 .ProblemAnalysisText {
     display: inline-block;
     margin: 10px;
     width: 50%;
+}
+.spacingBetween {
+    margin-top: 20px;
+}
+.ProblemAnalysisCategory {
+    display: inline-block;
+    margin: 10px;
+    width: 25%;
 }
 // 	.op-element
 // 	{

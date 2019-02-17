@@ -10603,7 +10603,6 @@ body {
 
 .ProblemAnalysis {
   float: left;
-  display: inline-block;
   max-height: 300px;
 }
 
@@ -10611,6 +10610,16 @@ body {
   display: inline-block;
   margin: 10px;
   width: 50%;
+}
+
+.spacingBetween {
+  margin-top: 20px;
+}
+
+.ProblemAnalysisCategory {
+  display: inline-block;
+  margin: 10px;
+  width: 25%;
 }
 
 .navbar-laravel {
