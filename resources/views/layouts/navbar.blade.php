@@ -24,7 +24,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/specialistsearch') }}">Speclalist Search</a>
+                            <a class="nav-link" href="{{ url('/specialistsearch') }}">Specialist Search</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
