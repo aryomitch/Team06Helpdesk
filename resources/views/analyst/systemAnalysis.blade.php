@@ -31,15 +31,18 @@
         <p>Database Application: {{$DACount}}</p>
         <p>Photo Editing Application: {{$PEACount}}</p>
         <p>PowerPoint: {{$PPCount}}</p>
+        <p>Internet Browsers: {{$IBCount}}</p>
     </div>
     <div class="container alert alert-primary ProblemAnalysisCategory">
-        <p>Internet Browsers: {{$IBCount}}</p>
         <p>Email Application: {{$EmailCount}}</p>
         <p>Mouses: {{$MousesCount}}</p>
         <p>Keyboards: {{$KeyboardsCount}}</p>
         <p>Screens: {{$ScreenCount}}</p>
         <p>Printers: {{$PrintersCount}}</p>
         <p>Computer Repair: {{$CRCount}}</p>
+        <p>Windows Issues: {{$WICount}}</p>
+        <p>Anti-Virus: {{$AVCount}}</p>
+
     </div>
 </div>
     

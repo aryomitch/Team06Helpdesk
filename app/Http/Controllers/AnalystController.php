@@ -13,8 +13,8 @@ class AnalystController extends Controller
     public function systemAnalysis(){
         // Get all the solved and unsolved problems
         $totalIssues = NewIssue::all();
-        $solvedProblems = NewIssue::where('completed', '=', 1)->get();
-        $unsolvedProblems = NewIssue::where('completed', '=', NULL)->get();
+        $solvedProblems = NewIssue::where('completed', '=', 'Yes')->get();
+        $unsolvedProblems = NewIssue::where('completed', '=', 'No')->get();
         // Count all the solved and unsolved problems
         $solvedProblemsCount = count($solvedProblems);
         $unsolvedProblemsCount = count($unsolvedProblems);
@@ -48,12 +48,15 @@ class AnalystController extends Controller
         $ScreenCount = count(NewIssue::where('category', '=', '12')->get());
         $PrintersCount = count(NewIssue::where('category', '=', '13')->get());
         $CRCount = count(NewIssue::where('category', '=', '14')->get());
+        $WICount = count(NewIssue::where('category', '=', '15')->get());
+        $AVCount = count(NewIssue::where('category', '=', '16')->get());
+
         
 
         // Create a bar chart
         $barchart = new problemAnalysis;
-        $barchart->labels(['Word Processing','Logins', 'Skype', 'Microsoft Excel', 'Database Applications', 'Photo Editing Applications', 'PowerPoint', 'Internet Browsers', 'Email Applications', 'Mouses', 'Keyboards', 'Screens', 'Printers', 'Computer Repair']);
-        $dataset = $barchart->dataset('Number of issues', 'horizontalBar', [$WordProcessingCount, $LoginCount, $SkypeCount, $MECount, $DACount, $PEACount, $PPCount, $IBCount, $EmailCount, $MousesCount, $KeyboardsCount, $ScreenCount, $PrintersCount, $CRCount]);
+        $barchart->labels(['Word Processing','Logins', 'Skype', 'Microsoft Excel', 'Database Applications', 'Photo Editing Applications', 'PowerPoint', 'Internet Browsers', 'Email Applications', 'Mouses', 'Keyboards', 'Screens', 'Printers', 'Computer Repair', 'Windows Issues', 'Anti-Virus']);
+        $dataset = $barchart->dataset('Number of issues', 'horizontalBar', [$WordProcessingCount, $LoginCount, $SkypeCount, $MECount, $DACount, $PEACount, $PPCount, $IBCount, $EmailCount, $MousesCount, $KeyboardsCount, $ScreenCount, $PrintersCount, $CRCount, $WICount, $AVCount]);
         $dataset->backgroundColor(collect(['#13FF00','#FF2D00']));
         $dataset->color('#000');
         $barchart->options([
@@ -82,7 +85,10 @@ class AnalystController extends Controller
             'KeyboardsCount' => $KeyboardsCount,
             'ScreenCount' => $ScreenCount,
             'PrintersCount' => $PrintersCount,
-            'CRCount' => $CRCount
+            'CRCount' => $CRCount,
+            'WICount' => $WICount,
+            'AVCount' => $AVCount
+
         ]);
     }
     public function helpdeskAnalysis(){
