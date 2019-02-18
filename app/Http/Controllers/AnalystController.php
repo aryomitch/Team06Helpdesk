@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Charts\problemAnalysis;
 use App\NewIssue;
 use App\Categorie;
+use App\User;
+use DB;
 
 class AnalystController extends Controller
 {
@@ -91,7 +93,25 @@ class AnalystController extends Controller
         ]);
     }
     public function helpdeskAnalysis(){
-        return view('analyst.helpdeskAnalysis');
+        // Return a list of helpdesk staff from database
+        $helpdeskUsers = User::where('role', '=', 'Helpdesk')->get();
+
+        $ProblemsLogged = DB::table('new_issues')
+            ->join('users', 'new_issues.operator_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id'))
+            ->groupBy('users.id')
+            ->get();
+
+        $ProblemsSolved = DB::table('new_issues')
+            ->join('users', 'new_issues.operator_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id, specialist_id, completed'))
+            ->groupBy('users.id', 'specialist_id', 'completed')
+            ->get();
+        return view('analyst.helpdeskAnalysis', [
+            'helpdeskUsers' => $helpdeskUsers,
+            'ProblemsLogged' => $ProblemsLogged,
+            'ProblemsSolved' => $ProblemsSolved
+        ]);
     }
     public function specialistAnalysis(){
         return view('analyst.technicalAnalysis');

@@ -10669,6 +10669,20 @@ body {
   max-width: 50%;
 }
 
+.helpdeskImg {
+  width: 60px;
+  height: 75px;
+}
+
+.helpdeskShow {
+  background-color: #BCDFFF;
+}
+
+.helpdeskDivs {
+  display: inline-block;
+  width: 30%;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
