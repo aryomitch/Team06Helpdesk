@@ -57,7 +57,6 @@ class AnalystController extends Controller
         $barchart = new problemAnalysis;
         $barchart->labels(['Word Processing','Logins', 'Skype', 'Microsoft Excel', 'Database Applications', 'Photo Editing Applications', 'PowerPoint', 'Internet Browsers', 'Email Applications', 'Mouses', 'Keyboards', 'Screens', 'Printers', 'Computer Repair', 'Windows Issues', 'Anti-Virus']);
         $dataset = $barchart->dataset('Number of issues', 'horizontalBar', [$WordProcessingCount, $LoginCount, $SkypeCount, $MECount, $DACount, $PEACount, $PPCount, $IBCount, $EmailCount, $MousesCount, $KeyboardsCount, $ScreenCount, $PrintersCount, $CRCount, $WICount, $AVCount]);
-        $dataset->backgroundColor(collect(['#13FF00','#FF2D00']));
         $dataset->color('#000');
         $barchart->options([
             'tooltip' => [
