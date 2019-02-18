@@ -13,6 +13,7 @@
 
 Route::get('/dashboard', 'HelpdeskController@index');
 Route::get('/specialistsearch', 'HelpdeskController@specialistSearch');
+Route::get('/problemdetails', 'HelpdeskController@problemDetails');
 
 Auth::routes();
 

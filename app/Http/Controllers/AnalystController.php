@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Charts\problemAnalysis;
-use App\Issue;
+use App\NewIssue;
 use App\Categorie;
 
 class AnalystController extends Controller
 {
     public function systemAnalysis(){
         // Get all the solved and unsolved problems
-        $totalIssues = Issue::all();
-        $solvedProblems = Issue::where('completed', '=', 1)->get();
-        $unsolvedProblems = Issue::where('completed', '=', NULL)->get();
+        $totalIssues = NewIssue::all();
+        $solvedProblems = NewIssue::where('completed', '=', 1)->get();
+        $unsolvedProblems = NewIssue::where('completed', '=', NULL)->get();
         // Count all the solved and unsolved problems
         $solvedProblemsCount = count($solvedProblems);
         $unsolvedProblemsCount = count($unsolvedProblems);
@@ -34,20 +34,20 @@ class AnalystController extends Controller
         ]);
 
         //Get data for categorires for bar chart
-        $WordProcessingCount = count(Issue::where('category', '=', '1')->get());
-        $LoginCount = count(Issue::where('category', '=', '2')->get());
-        $SkypeCount = count(Issue::where('category', '=', '3')->get());
-        $MECount = count(Issue::where('category', '=', '4')->get());
-        $DACount = count(Issue::where('category', '=', '5')->get());
-        $PEACount = count(Issue::where('category', '=', '6')->get());
-        $PPCount = count(Issue::where('category', '=', '7')->get());
-        $IBCount = count(Issue::where('category', '=', '8')->get());
-        $EmailCount = count(Issue::where('category', '=', '9')->get());
-        $MousesCount = count(Issue::where('category', '=', '10')->get());
-        $KeyboardsCount = count(Issue::where('category', '=', '11')->get());
-        $ScreenCount = count(Issue::where('category', '=', '12')->get());
-        $PrintersCount = count(Issue::where('category', '=', '13')->get());
-        $CRCount = count(Issue::where('category', '=', '14')->get());
+        $WordProcessingCount = count(NewIssue::where('category', '=', '1')->get());
+        $LoginCount = count(NewIssue::where('category', '=', '2')->get());
+        $SkypeCount = count(NewIssue::where('category', '=', '3')->get());
+        $MECount = count(NewIssue::where('category', '=', '4')->get());
+        $DACount = count(NewIssue::where('category', '=', '5')->get());
+        $PEACount = count(NewIssue::where('category', '=', '6')->get());
+        $PPCount = count(NewIssue::where('category', '=', '7')->get());
+        $IBCount = count(NewIssue::where('category', '=', '8')->get());
+        $EmailCount = count(NewIssue::where('category', '=', '9')->get());
+        $MousesCount = count(NewIssue::where('category', '=', '10')->get());
+        $KeyboardsCount = count(NewIssue::where('category', '=', '11')->get());
+        $ScreenCount = count(NewIssue::where('category', '=', '12')->get());
+        $PrintersCount = count(NewIssue::where('category', '=', '13')->get());
+        $CRCount = count(NewIssue::where('category', '=', '14')->get());
         
 
         // Create a bar chart

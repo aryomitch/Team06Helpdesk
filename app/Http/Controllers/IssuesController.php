@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Issue;
+use App\NewIssue;
 use App\User;
 use App\Employee;
 use App\Software;
 use App\Hardware;
 use App\Operating_system;
 use App\Categorie;
+use DB;
 use Redirect;
 
 class IssuesController extends Controller
@@ -21,7 +23,7 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        $issues = NewIssue::all();
         return view('pages.dashboard')->with('issues', $issues);
        
     }
@@ -36,6 +38,7 @@ class IssuesController extends Controller
         $employees = Employee::all();
         $softwares = Software::all();
         $hardwares = Hardware::all();
+        $specialists = User::where('role', '=', 'Specialist')->get();
         $operatingsystems = Operating_system::all();
         $Categories = Categorie::all();
         return view('issues.create', [
@@ -43,7 +46,8 @@ class IssuesController extends Controller
             'softwares' => $softwares,
             'hardwares' => $hardwares,
             'operatingsystems' => $operatingsystems,
-            'Categories' => $Categories
+            'Categories' => $Categories,
+            'specialists' => $specialists
         ]);
     }
 
@@ -58,26 +62,27 @@ class IssuesController extends Controller
         // Validate the input fields in the form
         $this->validate($request, [
             'caller_id' => 'required',
-            'description' => 'required',
+            'issue_description' => 'required',
             'category' => 'required',
             'priority' => 'required',
             'issue_name' => 'required'
         ]);
 
         // Create Issue (Save to Database)
-        $issue = new Issue;
+        $issue = new NewIssue;
         $issue->caller_id = $request->input('caller_id');
-        $issue->helpdesk_id = auth()->user()->id;
+        $issue->operator_id = auth()->user()->id;
         $issue->software = $request->input('software');
         $issue->hardware = $request->input('hardware');
         $issue->operating_system = $request->input('operating_system');
         $issue->issue_name = $request->input('issue_name');
-        $issue->description = $request->input('description');
+        $issue->issue_description = $request->input('issue_description');
         $issue->category = $request->input('category');
         $issue->priority = $request->input('priority');
-        $issue->completed = $request->input('completed');
+        $issue->completed = $request->input('completed', 'No');
         $issue->solution = $request->input('solution');
-        $issue->assigned_id = $request->input('assigned_id');
+        $issue->specialist_id = $request->input('specialist_id');
+        $issue->timestamps = false;
         $issue->save();
 
         // Return to Dashboard after logging the form with a success message
@@ -93,7 +98,61 @@ class IssuesController extends Controller
      */
     public function show($id)
     {
-        //
+        $issue = NewIssue::find($id);
+
+        $callerName = DB::table('new_issues')
+            ->join('employees', 'new_issues.caller_id', '=', 'employees.id')
+            ->where('new_issues.caller_id', '=', $issue->caller_id)
+            ->select('employees.full_name')
+            ->take(1)
+            ->get();
+        
+        $operatorInfo = DB::table('new_issues')
+            ->join('users', 'new_issues.operator_id', '=', 'users.id')
+            ->where('new_issues.operator_id', '=', $issue->operator_id)
+            ->select('users.name')
+            ->take(1)
+            ->get();
+        $hardwareInfo = DB::table('new_issues')
+            ->join('hardware', 'new_issues.hardware', '=', 'hardware.id')
+            ->where('new_issues.hardware', '=', $issue->hardware)
+            ->select('hardware.hardware_name')
+            ->take(1)
+            ->get();
+        $softwareInfo = DB::table('new_issues')
+            ->join('software', 'new_issues.software', '=', 'software.id')
+            ->where('new_issues.software', '=', $issue->software)
+            ->select('software.software_name')
+            ->take(1)
+            ->get();
+        $OperatingInfo = DB::table('new_issues')
+            ->join('operating_systems', 'new_issues.operating_system', '=', 'operating_systems.id')
+            ->where('new_issues.operating_system', '=', $issue->operating_system)
+            ->select('operating_systems.operating_system')
+            ->take(1)
+            ->get();
+        $categoryInfo = DB::table('new_issues')
+            ->join('categories', 'new_issues.category', '=', 'categories.categoryid')
+            ->where('new_issues.category', '=', $issue->category)
+            ->select('categories.category_name')
+            ->take(1)
+            ->get();
+        $specialistAssigned = DB::table('new_issues')
+            ->join('users', 'new_issues.specialist_id', '=', 'users.id')
+            ->where('new_issues.specialist_id', '=', $issue->specialist_id)
+            ->select('users.name')
+            ->take(1)
+            ->get();
+        return view('issues.show', [
+            'issue' => $issue,
+            'callerName' => $callerName,
+            'operatorInfo' => $operatorInfo,
+            'hardwareInfo' => $hardwareInfo,
+            'softwareInfo' => $softwareInfo,
+            'OperatingInfo' => $OperatingInfo,
+            'categoryInfo' => $categoryInfo,
+            'specialistAssigned' => $specialistAssigned
+        ]);
     }
 
     /**

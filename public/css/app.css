@@ -10626,6 +10626,49 @@ body {
   background-color: white;
 }
 
+.speicalistSearchInfo {
+  margin-top: 10px;
+}
+
+.checkSpecialist {
+  height: 750px;
+  width: 80%;
+}
+
+.spSearchTaskAssigned {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.spSearchPriorityBox {
+  display: inline-block;
+  margin-right: 5px;
+  margin-left: 5px;
+  text-align: center;
+  width: 30%;
+}
+
+.spSearchPriorityBox2 {
+  display: inline-block;
+  text-align: center;
+  width: 35%;
+}
+
+.specialistExpertise {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.showProblemDetails {
+  display: inline-block;
+}
+
+.showProblems30 {
+  display: inline-block;
+  max-width: 50%;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

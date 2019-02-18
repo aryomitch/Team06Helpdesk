@@ -45,6 +45,23 @@
                             </li>
                         </ul>
                     @endcan
+                    @can('isSpecialist')
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="SwitchTab(0)">High priority</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="SwitchTab(1)">Medium prority</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="SwitchTab(2)">Low priority</a>
+                            </li>
+                        </ul>
+                    @endcan
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

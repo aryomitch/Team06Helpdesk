@@ -12,7 +12,7 @@
         <div class="form-group">
             {{Form::label('caller_id', 'Caller ID')}} <span class="badge badge-pill badge-secondary">Required</span>
             <select name="caller_id" id="caller_id" for='caller_id' class="form-control">
-                    <option selected>Select a caller ID</option>
+                    <option value="" selected>Select a caller ID</option>
                 @foreach($employees as $employee)
                         <option value="{{$employee->id}}">ID: {{$employee->id}} - {{$employee->full_name}}</option>
                 @endforeach
@@ -22,7 +22,7 @@
             <div class="form-group col">
                 {{Form::label('software', 'Software')}}
                 <select name="software" id="software" for='software' class="form-control">
-                        <option selected>Select a software</option>
+                        <option value="" selected>Select a software</option>
                     @foreach($softwares as $software)
                             <option value="{{$software->id}}">{{$software->software_name}}</option>
                     @endforeach
@@ -31,7 +31,7 @@
             <div class="form-group col">
                 {{Form::label('hardware', 'Hardware')}}
                 <select name="hardware" id="hardware" for='hardware' class="form-control">
-                        <option selected>Select a hardware</option>
+                        <option value="" selected>Select a hardware</option>
                     @foreach($hardwares as $hardware)
                             <option value="{{$hardware->id}}">{{$hardware->hardware_name}} - {{$hardware->serial_number}} </option>
                     @endforeach
@@ -41,7 +41,7 @@
         <div class="form-group">
             {{Form::label('operating_system', 'Operating System')}}
             <select name="operating_system" id="operating_system" for='operating_system' class="form-control">
-                    <option selected>Select a operating system</option>
+                    <option value="" selected>Select a operating system</option>
                 @foreach($operatingsystems as $operatingsystem)
                         <option value="{{$operatingsystem->id}}">{{$operatingsystem->operating_system}}</option>
                 @endforeach
@@ -52,13 +52,13 @@
                 {{Form::text('issue_name', '', ['class' => 'form-control'])}}
             </div>
         <div class="form-group">
-            {{Form::label('description', 'Problem Description')}} <span class="badge badge-pill badge-secondary">Required</span>
-            {{Form::textarea('description', '', ['class' => 'form-control', 'rows' => '3'])}}
+            {{Form::label('issue_description', 'Problem Description')}} <span class="badge badge-pill badge-secondary">Required</span>
+            {{Form::textarea('issue_description', '', ['class' => 'form-control', 'rows' => '3'])}}
         </div>
         <div class="form-group">
             {{Form::label('category', 'Category')}} <span class="badge badge-pill badge-secondary">Required</span>
             <select name="category" id="category" for='category' class="form-control">
-                    <option selected>Pick the problem category</option>
+                    <option value="" selected>Pick the problem category</option>
                 @foreach($Categories as $Categorie)
                         <option value="{{$Categorie->categoryid}}">{{$Categorie->category_name}}</option>
                 @endforeach
@@ -66,7 +66,7 @@
         </div>
         <div class="form-group">
             {{Form::label('priority', 'Priority')}} <span class="badge badge-pill badge-secondary">Required</span>
-            {{Form::select('priority', ['low' => 'Low', 'medium' => 'Medium', 'high' => 'High'], null, ['placeholder' => 'Assign the priority', 'class' => 'form-control'])}}
+            {{Form::select('priority', ['Low' => 'Low', 'Medium' => 'Medium', 'High' => 'High'], null, ['placeholder' => 'Assign the priority', 'class' => 'form-control'])}}
         </div>
         <div id="specialistButton">
             <button type="button" class="btn btn-outline-secondary" id="extendSpecialistButton" onclick="extendSpecialist()">Assign Specialist</button>
@@ -74,18 +74,26 @@
         <div id="SpecialistDiv">
             <hr>
             <div class="form-group">
-                {{Form::label('assigned_id', 'Specialist')}}
-                {{Form::select('assigned_id', ['low' => 'Low', 'medium' => 'Medium', 'high' => 'High'], null, ['placeholder' => 'Assign a specialist', 'class' => 'form-control'])}}
-             </div>
+                {{Form::label('specialist_id', 'Specialist')}}
+                <select  name="specialist_id" id="specialist_id" for='specialist_id' class="form-control">
+                        <option value="" selected>Select a specialist</option>
+                    @foreach($specialists as $specialist)
+                            <option value="{{$specialist->id}}">ID: {{$specialist->id}} - {{$specialist->name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div id="specialistButton">
                 <button type="button" class="btn btn-outline-primary" id="extendSpecialistButton" onclick="extendSpecialist()">Unassign Specialist</button>
+                <button type="button" class="btn btn-outline-primary" id="extendSpecialistButton">
+                    <a class="ignoreTextDecoration" href="{{url('/specialistsearch')}}" target="_blank">Specialist Search</a>
+                </button>
             </div>
         </div>
         <hr>
         <div class="form-group">
             {{Form::label('completed', 'Problem Resolved')}}
-            {{Form::checkbox('completed', '1')}}
+            {{Form::checkbox('completed', 'Yes')}}
         </div>
         <div class="form-group">
             {{Form::label('solution', 'Solution')}}

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Issue;
 use App\User;
+use App\NewIssue;
+use DB;
 use Redirect;
 
 class HelpdeskController extends Controller
@@ -26,14 +28,44 @@ class HelpdeskController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        $issues = NewIssue::all();
         return view('pages.dashboard')->with('issues', $issues);
     }
 
     public function specialistSearch()
     {
         $specialistLists = User::where('role', '=', 'Specialist')->get();
-        return view('pages.specialistSearch')->with('specialistLists', $specialistLists);
+
+        $TotalIssues = DB::table('new_issues')
+            ->join('users', 'new_issues.specialist_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id'))
+            ->groupBy('users.id')
+            ->get();
+
+        $Totalprioritys = DB::table('new_issues')
+            ->join('users', 'new_issues.specialist_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id, priority'))
+            ->groupBy('users.id', 'priority')
+            ->get();
+
+        $expertises = DB::table('users')
+            ->join('specialist_categories', 'users.id', '=', 'specialist_id')
+            ->join('categories', 'specialist_categories.category_id', '=', 'categories.categoryid')
+            ->select('users.id', 'categories.category_name')
+            ->get();
+
+        
+        return view('pages.specialistSearch', [
+            'specialistLists' => $specialistLists,
+            'TotalIssues' => $TotalIssues,
+            'Totalprioritys' => $Totalprioritys,
+            'expertises' => $expertises
+        ]);
+    }
+
+    public function problemDetails() {
+        $issues = NewIssue::all();
+        return view('pages.problemdetails')->with('issues', $issues);
     }
 
 }
