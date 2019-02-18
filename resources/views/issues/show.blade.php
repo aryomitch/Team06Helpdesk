@@ -105,6 +105,12 @@
         <p>{{$issue->solution}}</p>
     </div>
 
+    @can('isSpecialist')
+
+    <a href="/issues/{{$issue->id}}/edit" class="btn btn-default btn-warning ">Update Issue</a>
+
+
+    @endcan
 </div>
 
 

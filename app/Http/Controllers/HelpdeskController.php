@@ -32,6 +32,12 @@ class HelpdeskController extends Controller
         return view('pages.dashboard')->with('issues', $issues);
     }
 
+    public function completed()
+    {
+        $issues = NewIssue::all();
+        return view('pages.dashboard')->with('issues', $issues);
+    }
+
     public function specialistSearch()
     {
         $specialistLists = User::where('role', '=', 'Specialist')->get();

@@ -163,9 +163,23 @@ class IssuesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employees = Employee::all();
+        $softwares = Software::all();
+        $hardwares = Hardware::all();
+        $specialists = User::where('role', '=', 'Specialist')->get();
+        $operatingsystems = Operating_system::all();
+        $Categories = Categorie::all();
+        $issue = NewIssue::find($id);
+        return view('issues.edit', [
+            'issue' => $issue,
+            'employees' => $employees,
+            'softwares' => $softwares,
+            'hardwares' => $hardwares,
+            'operatingsystems' => $operatingsystems,
+            'Categories' => $Categories,
+            'specialists' => $specialists
+        ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -175,7 +189,33 @@ class IssuesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate the input fields in the form
+        $this->validate($request, [
+            'caller_id' => 'required',
+            'issue_description' => 'required',
+            'category' => 'required',
+            'priority' => 'required',
+            'issue_name' => 'required'
+        ]);
+
+        // Create Issue (Save to Database)
+        $issue = NewIssue::find($id);
+        $issue->caller_id = $request->input('caller_id');
+        $issue->software = $request->input('software');
+        $issue->hardware = $request->input('hardware');
+        $issue->operating_system = $request->input('operating_system');
+        $issue->issue_name = $request->input('issue_name');
+        $issue->issue_description = $request->input('issue_description');
+        $issue->category = $request->input('category');
+        $issue->priority = $request->input('priority');
+        $issue->completed = $request->input('completed', 'No');
+        $issue->solution = $request->input('solution');
+        $issue->specialist_id = $request->input('specialist_id');
+        $issue->timestamps = false;
+        $issue->save();
+
+        // Return to Dashboard after logging the form with a success message
+        return redirect('/dashboard')->with('success', 'Issue Updated');
     }
 
     /**

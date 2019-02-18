@@ -27,6 +27,11 @@
                             <a class="nav-link" href="{{ url('/specialistsearch') }}">Speclalist Search</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/completedIssues') }}">Completed Issues</a>
+                        </li>
+                    </ul>
                     @endcan
                     @can('isAnalyst')
                         <ul class="navbar-nav">
@@ -48,17 +53,22 @@
                     @can('isSpecialist')
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" onclick="SwitchTab(0)">High priority</a>
+                                <a class="nav-link" href="#" onclick="SwitchTab(0)">High priority</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" onclick="SwitchTab(1)">Medium prority</a>
+                                <a class="nav-link" href="#" onclick="SwitchTab(1)">Medium prority</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" onclick="SwitchTab(2)">Low priority</a>
+                                <a class="nav-link" href="#" onclick="SwitchTab(2)">Low priority</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="ShowAll(1)">Show All</a>
                             </li>
                         </ul>
                     @endcan

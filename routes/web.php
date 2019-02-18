@@ -12,6 +12,7 @@
 */
 
 Route::get('/dashboard', 'HelpdeskController@index');
+Route::get('/completedIssues', 'HelpdeskController@completed');
 Route::get('/specialistsearch', 'HelpdeskController@specialistSearch');
 Route::get('/problemdetails', 'HelpdeskController@problemDetails');
 
