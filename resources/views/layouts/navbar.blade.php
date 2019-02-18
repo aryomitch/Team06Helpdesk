@@ -29,7 +29,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/completedIssues') }}">Completed Issues</a>
+                            <a class="nav-link" href="{{ url('/completedissues') }}">Completed Issues</a>
                         </li>
                     </ul>
                     @endcan
