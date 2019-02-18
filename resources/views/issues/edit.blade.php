@@ -6,6 +6,7 @@
     <div class="center">
         <h2>Edit Problem</h2>
     </div>
+    {{-- Form for editing --}}
     {!! Form::open(['action' => ['IssuesController@update', $issue->id], 'method' => 'post']) !!}
         <div class="form-group">
             {{Form::label('caller_id', 'Caller ID')}} <span class="badge badge-pill badge-secondary">Required</span>

@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-
+{{-- Display all information about a data - Mostly database queries --}}
 <div class="container boxshadow">
     <h1>{{$issue->issue_name}}</h1>
     <div class="alert alert-info showProblems30">

@@ -4,9 +4,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 <div class="container boxshadow spacingBetween">
     <h1>Problems Analysis</h1>
+    {{-- Show Piechart --}}
     <div class="ProblemAnalysis">
         {!! $chart->container() !!}
     </div>
+    {{-- Display information --}}
     <div class="container alert alert-primary ProblemAnalysisText">
         <p>Total Problems Logged: {{$totalIssuesCount}}</p>
     </div>
@@ -20,9 +22,11 @@
 
 <div class="container boxshadow spacingBetween">
     <h1>Number of issues by Categories</h1>
+    {{-- Display barchart --}}
     <div class="ProblemAnalysis">
         {!! $barchart->container() !!}
     </div>
+    {{-- Display numbers for all the categories --}}
     <div class="container alert alert-primary ProblemAnalysisCategory">
         <p>Word Processing: {{$WordProcessingCount}}</p>
         <p>Logins: {{$LoginCount}}</p>
@@ -46,7 +50,7 @@
     </div>
 </div>
     
-
+{{-- Chart scripts for rendering --}}
 {!! $chart->script() !!}
 {!! $barchart->script() !!}
 

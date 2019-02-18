@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{-- Dashboard layout --}}
 @extends('layouts.helpdesk')
 @extends('layouts.specialist')
 @extends('layouts.analyst')

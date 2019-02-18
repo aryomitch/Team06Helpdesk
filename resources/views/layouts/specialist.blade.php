@@ -1,7 +1,10 @@
 @can('isSpecialist')
 <div class="container">
+	{{-- Specialist View --}}
     <h2>Specialist View</h2>
 </div>
+{{-- Loop through variable collection --}}
+{{-- Display all the problems for specialist view --}}
 @if(count($issues) > 0)
 	<div class="container boxShadow checkIssues overflow-auto">
 		<div class="list-group" id="high_priority">
@@ -49,6 +52,7 @@
         You currently have no active issues.
     </div>
 @endif
+{{-- Scripts for switching the different priority --}}
 <script>
     function SwitchTab(TabIndex) {
         document.getElementById("high_priority").hidden = (TabIndex == 0) ? false : true;
@@ -63,20 +67,3 @@
     }
 </script>
 @endcan
-{{-- @can('isSpecialist')
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" onclick="SwitchTab(0);"}">High priority (*issue count*)</a>
-		</li>
-	</ul>
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" onclick="SwitchTab(1);">Medium prority (*issue count*)</a>
-		</li>
-	</ul>
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" onclick="SwitchTab(2);">Low priority (*issue count*)</a>
-		</li>
-	</ul>
-@endcan --}}

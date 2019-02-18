@@ -5,8 +5,10 @@
 <div class="container">
     <h2>Check Completed Issues</h2>
 </div>
+{{-- Completed Issues View --}}
 <div class="container boxShadow checkSpecialist overflow-auto">
     <div class="list-group">
+        {{-- If there is issues display --}}
         @if(count($issues) > 0)
             @foreach ($issues as $issue)
                 @if (($issue->completed) === 'Yes')
@@ -20,6 +22,7 @@
                 @endif
             @endforeach
         @else
+        {{-- If there is no issue--}}
             <div class="alert alert-info" role="alert">
                 There is currently no completed issues.
               </div>

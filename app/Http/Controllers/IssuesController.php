@@ -98,6 +98,7 @@ class IssuesController extends Controller
      */
     public function show($id)
     {
+        // Database Query 
         $issue = NewIssue::find($id);
 
         $callerName = DB::table('new_issues')
@@ -163,6 +164,7 @@ class IssuesController extends Controller
      */
     public function edit($id)
     {
+        // Database Query
         $employees = Employee::all();
         $softwares = Software::all();
         $hardwares = Hardware::all();

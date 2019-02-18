@@ -8,6 +8,7 @@
     <div class="center">
         <h2>Log Problem</h2>
     </div>
+    {{-- Form for creating new problems --}}
     {!! Form::open(['action' => 'IssuesController@store', 'method' => 'post']) !!}
         <div class="form-group">
             {{Form::label('caller_id', 'Caller ID')}} <span class="badge badge-pill badge-secondary">Required</span>
@@ -105,6 +106,7 @@
 @endcan
 
 <script>
+    // Script for buttons used in scripts
     function extendSpecialist() {
         var buttonShowHide = document.getElementById("specialistButton");
         if (buttonShowHide.style.display === 'none') {

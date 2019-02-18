@@ -31,15 +31,17 @@ class HelpdeskController extends Controller
         $issues = NewIssue::all();
         return view('pages.dashboard')->with('issues', $issues);
     }
-
+    // Return view completed
     public function completed()
     {
         $issues = NewIssue::all();
         return view('pages.completed')->with('issues', $issues);
     }
 
+    //Function for passsing data into view specialist search
     public function specialistSearch()
     {
+        // Database Query
         $specialistLists = User::where('role', '=', 'Specialist')->get();
 
         $TotalIssues = DB::table('new_issues')
@@ -60,7 +62,7 @@ class HelpdeskController extends Controller
             ->select('users.id', 'categories.category_name')
             ->get();
 
-        
+        // Return view with variables
         return view('pages.specialistSearch', [
             'specialistLists' => $specialistLists,
             'TotalIssues' => $TotalIssues,
@@ -69,6 +71,7 @@ class HelpdeskController extends Controller
         ]);
     }
 
+    // Return problem details view
     public function problemDetails() {
         $issues = NewIssue::all();
         return view('pages.problemdetails')->with('issues', $issues);

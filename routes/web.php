@@ -11,6 +11,7 @@
 |
 */
 
+// Routes + Linked Controllers
 Route::get('/dashboard', 'HelpdeskController@index');
 Route::get('/completedissues', 'HelpdeskController@completed');
 Route::get('/specialistsearch', 'HelpdeskController@specialistSearch');
