@@ -47,16 +47,54 @@
 
                         {{-- Solved by Helpdesk Operator --}}
                         <div class="helpdeskDivs">
+                            @php
+                                $problemSolvedbool = false;
+                            @endphp
                             @foreach ($ProblemsSolved as $ProblemSolved)
                                 @if ($ProblemSolved->specialist_id === NULL && $ProblemSolved->completed === 'Yes' && $helpdeskUser->id == $ProblemSolved->id)
                                     <div class="alert alert-primary center">
                                         <p>Number of problems solved:</p>
                                         <p>{{$ProblemSolved->Issue_count}}</p>
                                     </div>
+                                    @php
+                                        $problemSolvedbool = true;
+                                    @endphp
+                                    @break
                                 @endif
-                                
                             @endforeach
+                            @if ($problemSolvedbool === false)
+                                <div class="alert alert-primary center">
+                                    <p>Number of problems solved:</p>
+                                    <p>0</p>
+                                </div>
+                            @endif
                         </div>
+
+                        {{-- Assigned to Helpdesk Operator --}}
+                        <div class="helpdeskDivs2">
+                            @php
+                                $problemAssignedbool = false;
+                            @endphp
+                            @foreach ($AssignedProblems as $AssignedProblem)
+                                @if ($helpdeskUser->id == $AssignedProblem->id)
+                                    <div class="alert alert-primary center">
+                                        <p>Number of problems assigned to specialist:</p>
+                                        <p>{{$AssignedProblem->Issue_count}}</p>
+                                    </div>
+                                    @php
+                                        $problemAssignedbool = true;
+                                    @endphp
+                                    @break
+                                @endif
+                            @endforeach
+                            @if ($problemAssignedbool === false)
+                                <div class="alert alert-primary center">
+                                    <p>Number of problems assigned to specialist:</p>
+                                    <p>0</p>
+                                </div>
+                            @endif
+                        </div>
+
                     </div>
                 @endforeach
             </div>

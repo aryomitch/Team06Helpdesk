@@ -95,25 +95,51 @@ class AnalystController extends Controller
     public function helpdeskAnalysis(){
         // Return a list of helpdesk staff from database
         $helpdeskUsers = User::where('role', '=', 'Helpdesk')->get();
-
+        // Return ProblemsLogged
         $ProblemsLogged = DB::table('new_issues')
             ->join('users', 'new_issues.operator_id', '=', 'users.id')
             ->select(DB::raw('count(*) as Issue_count, users.id'))
             ->groupBy('users.id')
             ->get();
-
+        // Return Problem Solved
         $ProblemsSolved = DB::table('new_issues')
             ->join('users', 'new_issues.operator_id', '=', 'users.id')
             ->select(DB::raw('count(*) as Issue_count, users.id, specialist_id, completed'))
             ->groupBy('users.id', 'specialist_id', 'completed')
             ->get();
+        // Return Assigned Problems
+        $AssignedProblems = DB::table('new_issues')
+            ->join('users', 'new_issues.operator_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id'))
+            ->groupBy('users.id')
+            ->get();
         return view('analyst.helpdeskAnalysis', [
             'helpdeskUsers' => $helpdeskUsers,
             'ProblemsLogged' => $ProblemsLogged,
-            'ProblemsSolved' => $ProblemsSolved
+            'ProblemsSolved' => $ProblemsSolved,
+            'AssignedProblems' => $AssignedProblems
         ]);
     }
     public function specialistAnalysis(){
-        return view('analyst.technicalAnalysis');
+        // Return all the specialist
+        $SpecialistUsers = User::where('role', '=', 'Specialist')->get();
+
+        // Return all the problem assigned
+        $AssignedProblems = DB::table('new_issues')
+            ->join('users', 'new_issues.specialist_id', '=', 'users.id')
+            ->select(DB::raw('count(*) as Issue_count, users.id'))
+            ->groupBy('users.id')
+            ->get();
+        // Return all the Problems Status
+        $ProblemsStatus = DB::table('new_issues')
+        ->join('users', 'new_issues.specialist_id', '=', 'users.id')
+        ->select(DB::raw('count(*) as Issue_count, users.id, completed'))
+        ->groupBy('users.id', 'completed')
+        ->get();
+        return view('analyst.technicalAnalysis', [
+            'SpecialistUsers' => $SpecialistUsers,
+            'AssignedProblems' => $AssignedProblems,
+            'ProblemsStatus' => $ProblemsStatus
+        ]);
     }
 }
